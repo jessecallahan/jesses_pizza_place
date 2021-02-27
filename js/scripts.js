@@ -10,22 +10,29 @@ OrdersList.prototype.addId = function (newPizza) {
 }
 
 OrdersList.prototype.pushToOrdersList = function (newPizza) {
-  return this.orders.push(newPizza)
+  if (newPizza.name === "") {
+    $("#error").text("Add your name!")
+  }
+  else if (newPizza.size === undefined) {
+    $("#error").text("Pick a size!")
+  } else {
+    return this.orders.push(newPizza)
+  }
 }
 
-function Pizza(name, size, price, toppings, id) {
+function Pizza(name, size, total, toppings, id) {
   this.name = name;
   this.size = size;
-  this.price = price;
+  this.total = total;
   this.toppings = toppings;
   this.id = id;
 }
 
-Pizza.prototype.priceAdd = function () {
+Pizza.prototype.price = function () {
   let toppingsPrice = this.toppings.length * 2;
   let sizePrice = 0;
-  if (this.size === "L") { sizePrice = 20 } else if (this.size === "M") { sizePrice = 15 } else if (this.size === "S") { sizePrice = 8 } else { "error" }
-  return this.price = toppingsPrice + sizePrice
+  if (this.size === "L") { sizePrice = 20 } else if (this.size === "M") { sizePrice = 15 } else if (this.size === "S") { sizePrice = 8 } else { $("#error").text("error") }
+  return this.total = toppingsPrice + sizePrice
 }
 
 //User Interface
@@ -34,7 +41,7 @@ function displayOrderDetails(pizzaToDisplay) {
   var orderList = $("ul#output");
   var htmlForpizzaInfo = "";
   pizzaToDisplay.orders.forEach(function (pizza) {
-    htmlForpizzaInfo += "<li id=" + pizza.id + ">" + pizza.name + " " + pizza.size + " size pizza" + " $" + pizza.price + " Toppings: " + pizza.toppings + " ";
+    htmlForpizzaInfo += "<li id=" + pizza.id + ">" + pizza.name + " " + pizza.size + " size pizza" + " $" + pizza.total + " Toppings: " + pizza.toppings + " ";
   });
   orderList.html(htmlForpizzaInfo);
 };
@@ -54,7 +61,7 @@ $(document).ready(function () {
     newPizza.toppings = [];
     $("input:checkbox[name=toppings]:checked").each(function () { newPizza.toppings.push($(this).val()); });
 
-    newPizza.priceAdd()
+    newPizza.price()
     newOrdersList.addId(newPizza)
     newOrdersList.pushToOrdersList(newPizza)
 
@@ -62,7 +69,9 @@ $(document).ready(function () {
     displayOrderDetails(newOrdersList)
 
     //clears form
+    document.getElementById('new-name').value = '';
     $('input[type=checkbox]').prop('checked', false);
+    $('input:radio[name=size][value="L"]').prop('checked', 'checked');
 
 
   });
