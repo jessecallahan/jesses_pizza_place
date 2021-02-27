@@ -9,7 +9,7 @@ OrdersList.prototype.addId = function (newPizza) {
   return newPizza.id = id
 }
 
-OrdersList.prototype.pushToOrdersList = function (newPizza) {
+OrdersList.prototype.pushOrdersToList = function (newPizza) {
   if (newPizza.name === "") {
     $("#error").text("Add your name!")
   }
@@ -50,9 +50,10 @@ $(document).ready(function () {
   //start fake db
   let newOrdersList = new OrdersList()
 
-  //pizza order form 
+  //pizza order submit
   $("form#new-order").submit(function (event) {
 
+    //adds new order
     let newPizza = new Pizza()
     event.preventDefault();
 
@@ -63,19 +64,16 @@ $(document).ready(function () {
 
     newPizza.price()
     newOrdersList.addId(newPizza)
-    newOrdersList.pushToOrdersList(newPizza)
+    newOrdersList.pushOrdersToList(newPizza)
 
     //displays order 
     displayOrderDetails(newOrdersList)
 
-    //clears form
+    //clears fields
     document.getElementById('new-name').value = '';
     $('input[type=checkbox]').prop('checked', false);
     $('input:radio[name=size][value="L"]').prop('checked', 'checked');
 
-
   });
-
-
 
 });
