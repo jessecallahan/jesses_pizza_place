@@ -21,11 +21,14 @@ OrdersList.prototype.pushOrdersToList = function (newPizza) {
   }
 }
 
-function Pizza(name, size, total, toppings, id) {
+function Pizza(name, size, total, toppings, date, time, eta, id) {
   this.name = name;
   this.size = size;
   this.total = total;
   this.toppings = toppings;
+  this.date = date;
+  this.time = time;
+  this.eta = eta;
   this.id = id;
 }
 
@@ -36,13 +39,22 @@ Pizza.prototype.price = function () {
   return this.total = toppingsPrice + sizePrice
 }
 
+Pizza.prototype.addTimes = function () {
+  var d = new Date();
+  this.date = d.toLocaleDateString();   // -> "MM/DD/YYYY"
+  this.time = d.toLocaleTimeString();  // -> "HH:MM:SS AM"
+  let d2 = new Date
+  d2.setMinutes(d.getMinutes() + 30);
+  this.eta = d2.toLocaleTimeString()
+}
+
 //User Interface
 
 function displayOrderDetails(pizzaToDisplay) {
   var orderList = $("ul#output");
   var htmlForpizzaInfo = "";
   pizzaToDisplay.orders.forEach(function (pizza) {
-    htmlForpizzaInfo += "<li id=" + pizza.id + ">" + "<p>" + pizza.name + "</p>" + " " + pizza.size + " size pizza" + " $" + pizza.total + " Toppings: " + pizza.toppings + " ";
+    htmlForpizzaInfo += "<li id=" + pizza.id + ">" + `<p style="text-align:left;">` + pizza.name + `<span style="float:right;">id:` + pizza.id + "&nbsp&nbsp&nbsp&nbsp&nbsp</span></p>" + " " + pizza.size + " size pizza" + `<span style="color:red;"> $` + pizza.total + `</span><p><span style="color:green;"> Toppings: ` + pizza.toppings + "</p>" + pizza.time + " " + pizza.date + " " + `<p>Est. Arrival:<span style="color:blue;">  ` + pizza.eta + "</p><br> ";
   });
   orderList.html(htmlForpizzaInfo);
 };
@@ -64,20 +76,12 @@ $(document).ready(function () {
     $("input:checkbox[name=toppings]:checked").each(function () { newPizza.toppings.push($(this).val()); });
 
     newPizza.price()
+    newPizza.addTimes()
     newOrdersList.addId(newPizza)
     newOrdersList.pushOrdersToList(newPizza)
 
     //displays order 
     displayOrderDetails(newOrdersList)
-
-    //test
-    var d = new Date();
-    d.toLocaleString();       // -> "2/1/2013 7:37:08 AM"
-    console.log(d.toLocaleDateString());   // -> "2/1/2013"
-    console.log(d.toLocaleTimeString());  // -> "7:38:05 AM"
-    let d2 = new Date(d);
-    d2.setMinutes(d.getMinutes() + 30);
-    console.log(d2.toLocaleTimeString())
 
     //clears fields
     document.getElementById('new-name').value = '';

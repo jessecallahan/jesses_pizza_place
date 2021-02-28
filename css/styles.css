@@ -91,7 +91,7 @@ ul.no-bullets-size {
 ul.no-bullets-orders-list {
   list-style-type: none; /* Remove bullets */
   padding: 0; /* Remove padding */
-  margin: 45px; /* Remove margins */
+  margin: 25px; /* Remove margins */
 }
 
 .parent {
@@ -101,7 +101,6 @@ ul.no-bullets-orders-list {
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   font-size:13px;
-  
   }
   
   .div1 { grid-area: 5 / 2 / 6 / 3; }
