@@ -59,7 +59,7 @@ No known bugs at this time
 
 ## Link
 
-https://github.com/jessecallahan/Pizza-parlor
+https://jessecallahan.github.io/jesses_pizza_place/
 
 ## License
 
