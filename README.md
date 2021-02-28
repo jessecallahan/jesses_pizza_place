@@ -50,7 +50,7 @@ Expect(OrdersList.prototype.addId()).toEqual(newPizza.id = +1)
 
 Describe: OrdersList.prototype.pushOrdersToList(newPizza)
 
-Test 3: "It should push pizza order to order list"
+Test 3: "It should push pizza order to order list and if theres no name or size flash errors"
 Expect(OrdersList.prototype.pushOrdersToList()).toEqual(newOrdersList.orders = [{Pizza Object}])
 
 ## Known Bugs
