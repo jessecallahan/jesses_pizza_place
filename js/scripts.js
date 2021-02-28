@@ -44,7 +44,7 @@ Pizza.prototype.addTimes = function () {
   this.date = d.toLocaleDateString();   // -> "MM/DD/YYYY"
   this.time = d.toLocaleTimeString();  // -> "HH:MM:SS AM"
   let d2 = new Date
-  d2.setMinutes(d.getMinutes() + 30);
+  d2.setMinutes(d.getMinutes() + 45);
   this.eta = d2.toLocaleTimeString()
 }
 
@@ -54,7 +54,7 @@ function displayOrderDetails(pizzaToDisplay) {
   var orderList = $("ul#output");
   var htmlForpizzaInfo = "";
   pizzaToDisplay.orders.forEach(function (pizza) {
-    htmlForpizzaInfo += "<li id=" + pizza.id + ">" + `<p style="text-align:left;">` + pizza.name + `<span style="float:right;">id:` + pizza.id + "&nbsp&nbsp&nbsp&nbsp&nbsp</span></p>" + " " + pizza.size + " size pizza" + `<span style="color:red;"> $` + pizza.total + `</span><p><span style="color:green;"> Toppings: ` + pizza.toppings + "</p>" + pizza.time + " " + pizza.date + " " + `<p>Est. Arrival:<span style="color:blue;">  ` + pizza.eta + "</p><br> ";
+    htmlForpizzaInfo += "<li id=" + pizza.id + ">" + `<p style="text-align:left;">` + pizza.name + `<span style="float:right;">id:` + pizza.id + "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></p>" + " " + pizza.size + " size pizza" + `<span style="color:red;"> $` + pizza.total + `</span><p><span style="color:green;"> Toppings: ` + pizza.toppings + "</p>" + pizza.time + " " + pizza.date + " " + `<p>Est. Arrival:<span style="color:blue;">  ` + pizza.eta + "</p><br> ";
   });
   orderList.html(htmlForpizzaInfo);
 };

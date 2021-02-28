@@ -77,7 +77,6 @@ body {
 .smartphone .content {
   width: 360px;
   height: 640px;
-
   margin: 10px;
   font-family: 'pizza';
   
@@ -91,7 +90,7 @@ ul.no-bullets-size {
 ul.no-bullets-orders-list {
   list-style-type: none; /* Remove bullets */
   padding: 0; /* Remove padding */
-  margin: 25px; /* Remove margins */
+  margin: 15px; /* Remove margins */
 }
 
 .parent {
