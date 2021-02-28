@@ -13,7 +13,7 @@ body {
 }
 
 .button {
-  background-color: #4CAF50; /* Green */
+  background-color: #4CAF50; 
   border: none;
   color: white;
   padding: 15px 32px;
@@ -23,7 +23,7 @@ body {
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
-  -webkit-transition-duration: 0.4s; /* Safari */
+  -webkit-transition-duration: 0.4s;
   transition-duration: 0.4s;
 }
 
@@ -59,20 +59,6 @@ body {
   border-radius: 10px;
 }
 
-/* The circle on the bottom of the device */
-/* .smartphone:after {
-  content: '';
-  display: block;
-  width: 35px;
-  height: 35px;
-  position: absolute;
-  left: 50%;
-  bottom: -65px;
-  transform: translate(-50%, -50%);
-  background: #333;
-  border-radius: 50%;
-} */
-
 /* The screen (or content) of the device */
 .smartphone .content {
   width: 360px;
@@ -83,14 +69,14 @@ body {
 }
 
 ul.no-bullets-size {
-  list-style-type: none; /* Remove bullets */
-  padding: 0; /* Remove padding */
+  list-style-type: none; 
+  padding: 0; 
 }
 
 ul.no-bullets-orders-list {
-  list-style-type: none; /* Remove bullets */
-  padding: 0; /* Remove padding */
-  margin: 15px; /* Remove margins */
+  list-style-type: none;
+  padding: 0; 
+  margin: 15px; 
 }
 
 .parent {
