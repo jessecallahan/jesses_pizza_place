@@ -16,6 +16,7 @@ OrdersList.prototype.pushOrdersToList = function (newPizza) {
   else if (newPizza.size === undefined) {
     $("#error").text("Pick a size!")
   } else {
+    $("#error").text("")
     return this.orders.push(newPizza)
   }
 }
@@ -41,7 +42,7 @@ function displayOrderDetails(pizzaToDisplay) {
   var orderList = $("ul#output");
   var htmlForpizzaInfo = "";
   pizzaToDisplay.orders.forEach(function (pizza) {
-    htmlForpizzaInfo += "<li id=" + pizza.id + ">" + pizza.name + " " + pizza.size + " size pizza" + " $" + pizza.total + " Toppings: " + pizza.toppings + " ";
+    htmlForpizzaInfo += "<li id=" + pizza.id + ">" + "<p>" + pizza.name + "</p>" + " " + pizza.size + " size pizza" + " $" + pizza.total + " Toppings: " + pizza.toppings + " ";
   });
   orderList.html(htmlForpizzaInfo);
 };
@@ -68,6 +69,15 @@ $(document).ready(function () {
 
     //displays order 
     displayOrderDetails(newOrdersList)
+
+    //test
+    var d = new Date();
+    d.toLocaleString();       // -> "2/1/2013 7:37:08 AM"
+    console.log(d.toLocaleDateString());   // -> "2/1/2013"
+    console.log(d.toLocaleTimeString());  // -> "7:38:05 AM"
+    let d2 = new Date(d);
+    d2.setMinutes(d.getMinutes() + 30);
+    console.log(d2.toLocaleTimeString())
 
     //clears fields
     document.getElementById('new-name').value = '';
