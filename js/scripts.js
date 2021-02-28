@@ -66,7 +66,7 @@ $(document).ready(function () {
   //pizza order submit
   $("form#new-order").submit(function (event) {
 
-    //adds new order
+
     let newPizza = new Pizza()
     event.preventDefault();
 
@@ -74,6 +74,7 @@ $(document).ready(function () {
     newPizza.size = $("input:radio[name=size]:checked").val()
     newPizza.toppings = [];
     $("input:checkbox[name=toppings]:checked").each(function () { newPizza.toppings.push($(this).val()); });
+
 
     newPizza.price()
     newPizza.addTimes()
