@@ -14,7 +14,7 @@
 
 ## Description
 
-This webpage lets the user choose a movie title, enters their age, and picks a time of movie - based on these inputs the website will give a price to the movie
+This website allows you to order on one "phone" and allows you to see the orders on another. Depending on the size and amount of ingredients your pizza will cost different. All orders have an estimated arrival time of 45 minutes away from when they were ordered. 
 
 ## Setup/Installation Requirements
 
@@ -23,6 +23,8 @@ This webpage lets the user choose a movie title, enters their age, and picks a t
   3. Open index.html in your browser 
 
 ## Tests / Specs
+
+```
 Describe: let newPizza = new Pizza()
 
 Test 1: "It should create a Pizza Order object"
@@ -50,8 +52,9 @@ Expect(OrdersList.prototype.addId()).toEqual(newPizza.id = +1)
 
 Describe: OrdersList.prototype.pushOrdersToList(newPizza)
 
-Test 3: "It should push pizza order to order list and if theres no name or size flash errors"
+Test 3: "It should push pizza order to order list and if theres no name flash an error"
 Expect(OrdersList.prototype.pushOrdersToList()).toEqual(newOrdersList.orders = [{Pizza Object}])
+```
 
 ## Known Bugs
 

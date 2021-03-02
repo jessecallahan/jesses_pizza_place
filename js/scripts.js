@@ -12,9 +12,6 @@ OrdersList.prototype.addId = function (newPizza) {
 OrdersList.prototype.pushOrdersToList = function (newPizza) {
   if (newPizza.name === "") {
     $("#error").text("Add your name!")
-  }
-  else if (newPizza.size === undefined) {
-    $("#error").text("Pick a size!")
   } else {
     $("#error").text("")
     return this.orders.push(newPizza)
