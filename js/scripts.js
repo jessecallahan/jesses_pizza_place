@@ -76,6 +76,7 @@ $(document).ready(function () {
     let size = $("input:radio[name=size]:checked").val()
     let toppings = [];
     $("input:checkbox[name=toppings]:checked").each(function () { toppings.push($(this).val()); });
+
     let newPizza = new Pizza(name, size, toppings)
     event.preventDefault();
 
