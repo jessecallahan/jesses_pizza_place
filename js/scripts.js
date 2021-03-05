@@ -13,11 +13,11 @@ OrdersList.prototype.pushOrdersToList = function (newPizza) {
   return this.orders.push(newPizza)
 }
 
-function Pizza(name, size, total, toppings, date, time, eta, id) {
+function Pizza(name, size, toppings, total, date, time, eta, id) {
   this.name = name;
   this.size = size;
-  this.total = total;
   this.toppings = toppings;
+  this.total = total;
   this.date = date;
   this.time = time;
   this.eta = eta;
@@ -72,13 +72,12 @@ $(document).ready(function () {
   $("form#new-order").submit(function (event) {
 
 
-    let newPizza = new Pizza()
+    let name = $("input#new-name").val();
+    let size = $("input:radio[name=size]:checked").val()
+    let toppings = [];
+    $("input:checkbox[name=toppings]:checked").each(function () { toppings.push($(this).val()); });
+    let newPizza = new Pizza(name, size, toppings)
     event.preventDefault();
-
-    newPizza.name = $("input#new-name").val();
-    newPizza.size = $("input:radio[name=size]:checked").val()
-    newPizza.toppings = [];
-    $("input:checkbox[name=toppings]:checked").each(function () { newPizza.toppings.push($(this).val()); });
 
     runLogic(newPizza, newOrdersList)
 
