@@ -10,12 +10,7 @@ OrdersList.prototype.addId = function (newPizza) {
 }
 
 OrdersList.prototype.pushOrdersToList = function (newPizza) {
-  if (newPizza.name === "") {
-    $("#error").text("Add your name!")
-  } else {
-    $("#error").text("")
-    return this.orders.push(newPizza)
-  }
+  return this.orders.push(newPizza)
 }
 
 function Pizza(name, size, total, toppings, date, time, eta, id) {
@@ -32,7 +27,7 @@ function Pizza(name, size, total, toppings, date, time, eta, id) {
 Pizza.prototype.price = function () {
   let toppingsPrice = this.toppings.length * 2;
   let sizePrice = 0;
-  if (this.size === "L") { sizePrice = 20 } else if (this.size === "M") { sizePrice = 15 } else if (this.size === "S") { sizePrice = 8 } else { $("#error").text("error") }
+  if (this.size === "L") { sizePrice = 20 } else if (this.size === "M") { sizePrice = 15 } else { sizePrice = 8 }
   return this.total = toppingsPrice + sizePrice
 }
 
@@ -46,6 +41,19 @@ Pizza.prototype.addTimes = function () {
 }
 
 //User Interface
+
+function runLogic(newPizza, newOrdersList) {
+  if (newPizza.name === "") {
+    $("#error").text("Don't Forget Your Name!")
+  } else {
+    $("#error").text("")
+    newPizza.price()
+    newPizza.addTimes()
+    newOrdersList.addId(newPizza)
+    newOrdersList.pushOrdersToList(newPizza)
+  }
+
+}
 
 function displayOrderDetails(pizzaToDisplay) {
   var orderList = $("ul#output");
@@ -72,11 +80,8 @@ $(document).ready(function () {
     newPizza.toppings = [];
     $("input:checkbox[name=toppings]:checked").each(function () { newPizza.toppings.push($(this).val()); });
 
+    runLogic(newPizza, newOrdersList)
 
-    newPizza.price()
-    newPizza.addTimes()
-    newOrdersList.addId(newPizza)
-    newOrdersList.pushOrdersToList(newPizza)
 
     //displays order 
     displayOrderDetails(newOrdersList)
